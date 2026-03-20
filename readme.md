@@ -33,10 +33,15 @@ docker build --network host -t ffs -f docker/dockerfile .
 bash docker/run_container.sh
 ```
 
-- Option 2: pip
+- Option 2: pip (from source)
 ```bash
 conda create -n ffs python=3.12 && conda activate ffs
 pip install -e . --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple/
+```
+
+- Option 3: pip (from git)
+```bash
+pip install "fast-foundation-stereo @ git+https://github.com/kushtimusPrime/Fast-FoundationStereo.git" --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple/
 ```
 
 
