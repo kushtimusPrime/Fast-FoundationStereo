@@ -8,7 +8,6 @@
 
 import os,sys
 code_dir = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(f'{code_dir}/../')
 from omegaconf import OmegaConf
 from core.utils.utils import InputPadder
 import argparse, torch, imageio, logging, yaml
@@ -18,6 +17,8 @@ from Utils import (
     depth2xyzmap, toOpen3dCloud, o3d,
 )
 import cv2
+import viser
+import time
 
 
 if __name__=="__main__":
@@ -100,10 +101,7 @@ if __name__=="__main__":
   vis = vis_disparity(disp, min_val=min_val, max_val=max_val, cmap=cmap, color_map=cv2.COLORMAP_TURBO)
   vis = np.concatenate([img0_ori, img1_ori, vis], axis=1)
   imageio.imwrite(f'{args.out_dir}/disp_vis.png', vis)
-  s = 1280/vis.shape[1]
-  resized_vis = cv2.resize(vis, (int(vis.shape[1]*s), int(vis.shape[0]*s)))
-  cv2.imshow('disp', resized_vis[:,:,::-1])
-  cv2.waitKey(0)
+  logging.info(f"Disparity visualization saved to {args.out_dir}/disp_vis.png")
 
   if args.remove_invisible:
     yy,xx = np.meshgrid(np.arange(disp.shape[0]), np.arange(disp.shape[1]), indexing='ij')
@@ -135,16 +133,23 @@ if __name__=="__main__":
       o3d.io.write_point_cloud(f'{args.out_dir}/cloud_denoise.ply', inlier_cloud)
       pcd = inlier_cloud
 
-    logging.info("Visualizing point cloud. Press ESC to exit.")
-    vis = o3d.visualization.Visualizer()
-    vis.create_window()
-    vis.add_geometry(pcd)
-    vis.get_render_option().point_size = 1.0
-    vis.get_render_option().background_color = np.array([0.5, 0.5, 0.5])
-    ctr = vis.get_view_control()
-    ctr.set_front([0, 0, -1])
-    id = np.asarray(pcd.points)[:,2].argmin()
-    ctr.set_lookat(np.asarray(pcd.points)[id])
-    ctr.set_up([0, -1, 0])
-    vis.run()
-    vis.destroy_window()
+    logging.info("Starting viser point cloud viewer...")
+    server = viser.ViserServer(host="0.0.0.0", port=8080)
+
+    points = np.asarray(pcd.points)
+    colors = np.asarray(pcd.colors)
+
+    server.scene.add_point_cloud(
+      "/point_cloud",
+      points=points.astype(np.float32),
+      colors=(colors * 255).astype(np.uint8) if colors.max() <= 1.0 else colors.astype(np.uint8),
+      point_size=0.002,
+      point_shape="rounded",
+    )
+
+    logging.info("Viser running at http://localhost:8080 — press Ctrl+C to exit.")
+    try:
+      while True:
+        time.sleep(1.0)
+    except KeyboardInterrupt:
+      pass

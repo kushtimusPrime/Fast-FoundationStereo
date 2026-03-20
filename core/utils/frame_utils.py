@@ -1,9 +1,7 @@
 import numpy as np
 from PIL import Image
 from os.path import basename, exists, splitext
-import os,sys
-code_dir = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(f'{code_dir}/../../')
+import os
 import re
 import json
 import imageio

@@ -3,8 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 import sys,os
-code_dir = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(f'{code_dir}/../')
 from core.update import BasicSelectiveMultiUpdateBlock
 from core.extractor import ContextNetSharedBackbone, Feature
 from core.geometry import Combined_Geo_Encoding_Volume

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fast-foundation-stereo"
+version = "0.1.0"
+description = "Fast-FoundationStereo: Real-Time Zero-Shot Stereo Matching"
+requires-python = ">=3.10"
+dependencies = [
+    "timm",
+    "einops",
+    "omegaconf",
+    "scipy",
+    "numpy",
+    "scikit-image",
+    "opencv-contrib-python",
+    "imageio",
+    "pyyaml",
+    "open3d",
+    "viser",
+]
+
+[tool.setuptools]
+packages = ["core", "core.utils"]
+py-modules = ["Utils"]

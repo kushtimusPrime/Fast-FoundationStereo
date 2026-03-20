@@ -2,7 +2,6 @@ import warnings, argparse, logging, os, sys,zipfile
 os.environ['TORCH_COMPILE_DISABLE'] = '1'
 os.environ['TORCHDYNAMO_DISABLE'] = '1'
 code_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(f'{code_dir}/../')
 import omegaconf, yaml, torch,pdb
 from omegaconf import OmegaConf
 from core.foundation_stereo import FastFoundationStereo, TrtFeatureRunner, TrtPostRunner, build_gwc_volume_triton
