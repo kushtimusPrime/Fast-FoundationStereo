@@ -8,6 +8,9 @@ version = "0.1.0"
 description = "Fast-FoundationStereo: Real-Time Zero-Shot Stereo Matching"
 requires-python = ">=3.10"
 dependencies = [
+    "torch",
+    "torchvision",
+    "xformers",
     "timm",
     "einops",
     "omegaconf",

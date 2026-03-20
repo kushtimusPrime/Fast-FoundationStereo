@@ -36,8 +36,7 @@ bash docker/run_container.sh
 - Option 2: pip
 ```bash
 conda create -n ffs python=3.12 && conda activate ffs
-pip install torch torchvision xformers --index-url https://download.pytorch.org/whl/cu128
-pip install -r requirements.txt
+pip install -e . --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple/
 ```
 
 
