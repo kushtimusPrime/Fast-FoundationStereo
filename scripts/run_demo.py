@@ -9,10 +9,10 @@
 import os,sys
 code_dir = os.path.dirname(os.path.realpath(__file__))
 from omegaconf import OmegaConf
-from core.utils.utils import InputPadder
+from fast_foundation_stereo.utils.utils import InputPadder
 import argparse, torch, imageio, logging, yaml
 import numpy as np
-from Utils import (
+from fast_foundation_stereo_utils import (
     AMP_DTYPE, set_logging_format, set_seed, vis_disparity,
     depth2xyzmap, toOpen3dCloud, o3d,
 )

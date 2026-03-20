@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-from core.utils.utils import bilinear_sampler, bilinear_sampler1d
+from fast_foundation_stereo.utils.utils import bilinear_sampler, bilinear_sampler1d
 
 class Combined_Geo_Encoding_Volume:
     def __init__(self, init_fmap1, init_fmap2, geo_volume, num_levels=2):

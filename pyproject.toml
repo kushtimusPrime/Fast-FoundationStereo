@@ -25,5 +25,5 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["core", "core.utils"]
-py-modules = ["Utils"]
+packages = ["fast_foundation_stereo", "fast_foundation_stereo.utils"]
+py-modules = ["fast_foundation_stereo_utils"]

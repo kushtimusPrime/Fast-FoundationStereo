@@ -9,10 +9,10 @@
 import os,sys
 code_dir = os.path.dirname(os.path.realpath(__file__))
 from omegaconf import OmegaConf
-from core.utils.utils import InputPadder
+from fast_foundation_stereo.utils.utils import InputPadder
 import argparse, torch, logging, yaml, time
 import numpy as np
-from Utils import AMP_DTYPE, set_logging_format, set_seed
+from fast_foundation_stereo_utils import AMP_DTYPE, set_logging_format, set_seed
 
 
 if __name__=="__main__":

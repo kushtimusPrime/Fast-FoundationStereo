@@ -3,25 +3,25 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 import sys,os
-from core.update import BasicSelectiveMultiUpdateBlock
-from core.extractor import ContextNetSharedBackbone, Feature
-from core.geometry import Combined_Geo_Encoding_Volume
-from core.submodule import (
+from fast_foundation_stereo.update import BasicSelectiveMultiUpdateBlock
+from fast_foundation_stereo.extractor import ContextNetSharedBackbone, Feature
+from fast_foundation_stereo.geometry import Combined_Geo_Encoding_Volume
+from fast_foundation_stereo.submodule import (
     BasicConv, Conv3dNormActReduced, ResnetBasicBlock3D, BasicConv_IN, Conv2x,
     FeatureAtt, CostVolumeDisparityAttention, SpatialAttentionExtractor,
     ChannelAttentionEnhancement, disparity_regression, context_upsample,
     build_gwc_volume_optimized_pytorch1, build_gwc_volume_triton,
     build_concat_volume_optimized_pytorch1, build_concat_volume_optimized_pytorch,
 )
-from core.utils.utils import InputPadder
-import Utils as U
+from fast_foundation_stereo.utils.utils import InputPadder
+import fast_foundation_stereo_utils as U
 import time
 
-sys.modules['foundation_stereo_ori'] = sys.modules['core']
-sys.modules['foundation_stereo_ori.submodule'] = sys.modules['core.submodule']
-sys.modules['foundation_stereo_ori.extractor'] = sys.modules['core.extractor']
-sys.modules['foundation_stereo_ori.update'] = sys.modules['core.update']
-sys.modules['foundation_stereo_ori.foundation_stereo'] = sys.modules['core.foundation_stereo']
+sys.modules['foundation_stereo_ori'] = sys.modules['fast_foundation_stereo']
+sys.modules['foundation_stereo_ori.submodule'] = sys.modules['fast_foundation_stereo.submodule']
+sys.modules['foundation_stereo_ori.extractor'] = sys.modules['fast_foundation_stereo.extractor']
+sys.modules['foundation_stereo_ori.update'] = sys.modules['fast_foundation_stereo.update']
+sys.modules['foundation_stereo_ori.foundation_stereo'] = sys.modules['fast_foundation_stereo.foundation_stereo']
 class FoundationStereo(nn.Module):
   pass
 

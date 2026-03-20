@@ -4,8 +4,8 @@ os.environ['TORCHDYNAMO_DISABLE'] = '1'
 code_dir = os.path.dirname(os.path.abspath(__file__))
 import omegaconf, yaml, torch,pdb
 from omegaconf import OmegaConf
-from core.foundation_stereo import FastFoundationStereo, TrtFeatureRunner, TrtPostRunner, build_gwc_volume_triton
-import Utils as U
+from fast_foundation_stereo.foundation_stereo import FastFoundationStereo, TrtFeatureRunner, TrtPostRunner, build_gwc_volume_triton
+import fast_foundation_stereo_utils as U
 
 
 class FoundationStereoOnnx(FastFoundationStereo):

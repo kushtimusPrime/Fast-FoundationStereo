@@ -2,8 +2,8 @@ import torch,pdb
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from Utils import AMP_DTYPE
-import Utils as U
+from fast_foundation_stereo_utils import AMP_DTYPE
+import fast_foundation_stereo_utils as U
 try:
   import triton
   import triton.language as tl

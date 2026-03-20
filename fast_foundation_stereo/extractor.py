@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from core.submodule import Conv2x_IN
+from fast_foundation_stereo.submodule import Conv2x_IN
 import timm
 
 

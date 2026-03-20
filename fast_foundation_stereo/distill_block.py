@@ -2,7 +2,7 @@ import sys
 from foundation_stereo_ori.submodule import FeatureAtt
 import torch
 import torch.nn as nn
-import Utils as U
+import fast_foundation_stereo_utils as U
 import pickle
 
 
